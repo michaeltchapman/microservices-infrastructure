@@ -40,17 +40,6 @@
   tags:
     - dnsmasq
 
-- name: configure networkmanager for dnsmasq
-  sudo: yes
-  lineinfile:
-    dest: /etc/NetworkManager/NetworkManager.conf
-    line: "dns=none"
-    insertafter: "^\\[main\\]$"
-  notify:
-    - restart networkmanager
-  tags:
-    - dnsmasq
-
 - name: add dnsmasq to /etc/resolv.conf
   sudo: yes
   lineinfile:

@@ -8,6 +8,7 @@ keyboard us
 lang en_US.UTF-8
 timezone --utc Etc/UTC
 
+services --disabled=avahi-daemon,tuned,postfix,polkit,NetworkManager --enabled=network
 network --device=enp0s3 --bootproto=dhcp --ipv6=auto --activate
 selinux --permissive
 firewall --disabled
@@ -25,8 +26,9 @@ repo --name="base"      --baseurl=http://mirror.centos.org/centos/7/os/x86_64
 repo --name="updates"   --baseurl=http://mirror.centos.org/centos/7/updates/x86_64
 
 %packages --nobase --ignoremissing --excludedocs
-@core
+@core --nodefaults
 -*firmware
+-NetworkManager*
 %end
 
 reboot
